@@ -1,6 +1,6 @@
 class Solution {
 public:
-     int n;
+      int n;
     
     bool isPalindrome(string &s, int l, int r) {
         
