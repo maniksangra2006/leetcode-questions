@@ -1,4 +1,4 @@
- class Solution {
+  class Solution {
 private:
     bool isValid(vector<vector<char>>& board, int row, int col, char ch){
         for(int i=0; i<9; i++){
