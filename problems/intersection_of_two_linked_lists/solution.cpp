@@ -14,11 +14,10 @@ public:
             temp=headB;
             while(temp!=NULL){
                 if(headA==temp) return headA;
-            
-            temp=temp->next;
+                temp=temp->next;
+            }
+            headA=headA->next;
          }
-         headA=headA->next;
-    }
-    return NULL;
+         return NULL;
     }
 };
