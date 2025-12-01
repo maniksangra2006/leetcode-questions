@@ -1,7 +1,7 @@
 class Solution {
 public:
     string reverseVowels(string s) {
-        string word = s;
+         string word = s;
         int start = 0;
         int end = s.length() - 1;
         string vowels = "aeiouAEIOU";
