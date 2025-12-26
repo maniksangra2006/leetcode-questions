@@ -1,0 +1,24 @@
+class Solution {
+public:
+
+ int subarray_with_atmost_k(vector<int>& nums,int k){
+        unordered_map<int,int> map;
+        int left = 0 , right = 0,ans = 0;
+        while(right<nums.size()){
+            map[nums[right]]++;
+            while(map.size()>k){
+                map[nums[left]]--;
+                if(map[nums[left]]==0)map.erase(nums[left]);
+                left++;
+            }
+            ans += right-left+1; // basically the size of subarray;
+            right++;
+        }
+        return ans;
+    }
+    int subarraysWithKDistinct(vector<int>& nums, int k) {
+          if (k == 0) return 0;
+        return subarray_with_atmost_k(nums, k) 
+             - subarray_with_atmost_k(nums, k - 1);
+    }
+};
