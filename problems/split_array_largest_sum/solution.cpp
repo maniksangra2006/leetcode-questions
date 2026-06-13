@@ -1,34 +1,42 @@
 class Solution {
 public:
-int solve(vector<int> &arr ,int mid){
+bool ispossible(vector<int> & nums,int n,int m,int mid){
     int cnt=1;
-    long long sum=0;
-    for(int i:arr){
-        if(sum+i<=mid){
-            sum+=(long long )i;
+    int pagesum=0;
+    for(int i=0;i<n;i++){
+        if(pagesum+nums[i]<=mid){
+            pagesum+=nums[i];
         }
-        else{
+        else {
             cnt++;
-        
-        
-        sum=(long long ) i;
+            if(cnt>m||nums[i]>mid){
+                return false;
+            }  
+            pagesum=nums[i];
+        }
     }
-    }
-    return cnt;
+    return true;
 }
     int splitArray(vector<int>& nums, int k) {
-      int low = *max_element(nums.begin(), nums.end()); 
-        int high = accumulate(nums.begin(), nums.end(), 0);
-        
-        while (low <= high) {
-            int mid = low + (high - low) / 2; 
-            int cnt = solve(nums, mid);
-            if (cnt > k) {
-                low = mid + 1; 
-            } else {
-                high = mid - 1;
-            }
+        int s=0;
+        int sum=0;
+        int n =nums.size();
+        for(int i=0;i<n;i++){
+         sum+=nums[i];
         }
-        return low;
+        int e =sum;
+        int ans=-1;
+        int mid =s+(e-s)/2;
+        while(s<=e){
+            if (ispossible(nums,n,k,mid)){
+                ans=mid;
+                e=mid-1;
+            }
+            else {
+                s=mid+1;
+            }
+            mid=s+(e-s)/2;
+        }
+        return ans;
     }
 };
