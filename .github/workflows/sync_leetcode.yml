@@ -1,9 +1,7 @@
-name: Sync Leetcode
+name: Initial Leetcode Bulk Sync
 
 on:
-  workflow_dispatch: # Allows you to run it manually anytime
-  schedule:
-    - cron: "0 8 * * *" # Runs automatically every day at 8:00 AM UTC
+  workflow_dispatch: # This allows you to trigger the bulk sync manually
 
 jobs:
   build:
@@ -16,3 +14,4 @@ jobs:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          destination-id: "0" # Forces it to sync everything back to your first problem
