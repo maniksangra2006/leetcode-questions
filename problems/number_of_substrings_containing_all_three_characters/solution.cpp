@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        int cnt=0;
+         int cnt=0;
         int l=0;
         unordered_map<char,int> char_cnt={{'a',0},{'b',0},{'c',0}};
         for(int i=0;i<s.size();i++){
